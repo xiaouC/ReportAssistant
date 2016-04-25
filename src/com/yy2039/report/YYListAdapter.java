@@ -74,6 +74,12 @@ public class YYListAdapter extends BaseAdapter {
             convertView = mInflater.inflate( layout_res, null );
         }
 
+        if( position % 2 == 1 ) {
+            convertView.setBackgroundResource( R.drawable.task_item_1_selector );
+        } else {
+            convertView.setBackgroundResource( R.drawable.task_item_0_selector );
+        }
+
         Map<Integer,onYYListItemHandler> item_data = list_data.get( position );
         for( Map.Entry<Integer,onYYListItemHandler> item_entry : item_data.entrySet() ) {
             Integer v_id = item_entry.getKey();

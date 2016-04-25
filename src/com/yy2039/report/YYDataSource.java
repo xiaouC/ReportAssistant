@@ -20,18 +20,6 @@ public class YYDataSource {
 
         ret_task_list.add( new TaskItem() {
             public String getDispatchTime() {
-                return "分派时间";
-            }
-            public String getTaskTitle() {
-                return "标题";
-            }
-            public String getDispatchName() {
-                return "分派员";
-            }
-        });
-
-        ret_task_list.add( new TaskItem() {
-            public String getDispatchTime() {
                 return "2016-04-24 19:45:50";
             }
             public String getTaskTitle() {

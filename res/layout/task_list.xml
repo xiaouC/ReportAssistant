@@ -51,6 +51,7 @@
                 android:typeface="serif"
                 android:textStyle="bold"
                 android:gravity="center"
+                android:layout_weight="1"
                 />
             <Button
                 android:id="@+id/btn_3"
@@ -67,15 +68,57 @@
         <LinearLayout 
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:background="@color/white"
             android:layout_weight="1"
             >
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/item_blue_title"
+                >
+                <View style="@style/vertical_layout" />
+                <TextView
+                    android:id="@+id/dispatch_time"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:text="分派时间"
+                    />
+                <View style="@style/vertical_layout" />
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:text="标题"
+                    />
+                <View style="@style/vertical_layout" />
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:text="分派员"
+                    />
+                <View style="@style/vertical_layout" />
+            </LinearLayout>
+            <View style="@style/horizontal_layout" />
             <ListView
                 android:id="@+id/item_list"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
+                android:listSelector="@color/blue"
+                android:scrollingCache="false"
+                android:fadingEdge="none"
                 >
             </ListView>
         </LinearLayout>
@@ -108,6 +151,7 @@
                 android:typeface="serif"
                 android:textStyle="bold"
                 android:gravity="center"
+                android:layout_weight="1"
                 />
             <Button
                 android:id="@+id/btn_6"

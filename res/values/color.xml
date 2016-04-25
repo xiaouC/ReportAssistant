@@ -7,4 +7,7 @@
   <color name="gray">#7D7D7D</color>
   <color name="title_red">#CD493D</color>
   <color name="blue">#0000FF</color>
+  <color name="item_blue_title">#0EA6F4</color>
+  <color name="item_blue_0">#51C4FF</color>
+  <color name="item_blue_1">#ACDDF6</color>
 </resources>

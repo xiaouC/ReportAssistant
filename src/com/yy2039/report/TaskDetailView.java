@@ -6,6 +6,9 @@ import java.util.Map;
 import java.util.HashMap;
 import android.widget.TextView;
 import android.widget.ListView;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class TaskDetailView {
     protected YYListAdapter yy_list_adapter = null;
@@ -23,6 +26,14 @@ public class TaskDetailView {
         yy_list_adapter = new YYListAdapter( ReportAssistantActivity.main_activity, R.layout.task_item, getItemListData() );
         ListView lv = (ListView)ReportAssistantActivity.main_activity.findViewById( R.id.item_list );
         lv.setAdapter( yy_list_adapter );
+
+        lv.setOnItemClickListener( new OnItemClickListener() {
+            public void onItemClick( AdapterView<?> arg0, View arg1, int arg2, long arg3 ) {
+                // TODO Auto-generated method stub
+                if( arg2 != 0 ) {
+                }
+            }
+        });
     }
 
     public List<Map<Integer,YYListAdapter.onYYListItemHandler>> getItemListData() {
