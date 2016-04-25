@@ -14,6 +14,7 @@ public class ReportAssistantActivity extends Activity
 {
     public static ReportAssistantActivity main_activity;
     public YYDataSource yy_data_source = null;
+    public TaskListView task_list_view = null;
     public TaskDetailView task_detail_view = null;
 
     /** Called when the activity is first created. */
@@ -25,9 +26,10 @@ public class ReportAssistantActivity extends Activity
         main_activity = this;
 
         yy_data_source = new YYDataSource();
+        task_list_view = new TaskListView();
         task_detail_view = new TaskDetailView();
 
-        task_detail_view.setView();
+        task_list_view.setView();
         //setContentView( R.layout.main );
 
         //EditText pwdText = (EditText)findViewById( R.id.password );

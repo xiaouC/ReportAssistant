@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@color/transparent"
+    >
+    <View style="@style/vertical_layout" />
+    <TextView
+        android:id="@+id/item_type"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        android:layout_gravity="center"
+        />
+    <View style="@style/vertical_layout" />
+    <EditText
+        android:id="@+id/item_value"
+        android:layout_width="fill_parent"
+        android:layout_height="24dp"
+        android:textSize="14dp"
+        android:singleLine="true"
+        android:gravity="left"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        />
+    <View style="@style/vertical_layout" />
+</LinearLayout>
