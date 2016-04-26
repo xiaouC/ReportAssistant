@@ -19,10 +19,16 @@ public class YYSchedule
     private int nNextScheduleIndex = 0;
 
     private Handler handler;
-    public YYSchedule() {
+    private ReportAssistantActivity main_activity;
+    public YYSchedule( ReportAssistantActivity activity ) {
+        main_activity = activity;
 
         handler = new Handler(){
             public void handleMessage( Message msg ) {
+                if( main_activity.bIsDestroy ) {
+                    return;
+                }
+
                 Log.v( "cconn", "handleMessage schedule_index : " + msg.what );
                 onScheduleAction schedule_action = all_schedule_actions.get( msg.what );
                 all_schedule_actions.remove( msg.what );

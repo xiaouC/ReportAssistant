@@ -10,32 +10,31 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class TaskListView {
-    protected YYListAdapter yy_list_adapter = null;
-
+public class TaskListView extends YYViewBase {
     public TaskListView() {
+        view_layout_res_id = R.layout.task_list;
     }
 
-    public void setView() {
-        ReportAssistantActivity.main_activity.setContentView( R.layout.task_list );
+    public void setView( boolean bIsPush, onViewBackHandler handler ) {
+        super.setView( bIsPush, handler );
 
         fillListView();
     }
 
     public void fillListView() {
-        yy_list_adapter = new YYListAdapter( ReportAssistantActivity.main_activity, R.layout.task_list_item, getItemListData() );
-        ListView lv = (ListView)ReportAssistantActivity.main_activity.findViewById( R.id.item_list );
+        super.fillListView();
+
+        yy_list_adapter = new YYListAdapter( main_activity, R.layout.task_list_item, getItemListData() );
+        ListView lv = (ListView)main_activity.findViewById( R.id.item_list );
         lv.setAdapter( yy_list_adapter );
 
         lv.setOnItemClickListener( new OnItemClickListener() {
             public void onItemClick( AdapterView<?> arg0, View arg1, int arg2, long arg3 ) {
                 // TODO Auto-generated method stub
-                if( arg2 != 0 ) {
-                    List<YYDataSource.TaskItem> task_list = ReportAssistantActivity.main_activity.yy_data_source.getAllTasks();
+                List<YYDataSource.TaskItem> task_list = main_activity.yy_data_source.getAllTasks();
 
-                    ReportAssistantActivity.main_activity.task_detail_view.task_item = task_list.get( arg2 );
-                    ReportAssistantActivity.main_activity.task_detail_view.setView();
-                }
+                main_activity.task_detail_view.task_item = task_list.get( arg2 );
+                main_activity.task_detail_view.setView( true, yy_view_self.getViewBackHandler() );
             }
         });
     }
@@ -43,7 +42,7 @@ public class TaskListView {
     public List<Map<Integer,YYListAdapter.onYYListItemHandler>> getItemListData() {
         List<Map<Integer,YYListAdapter.onYYListItemHandler>> ret_data = new ArrayList<Map<Integer,YYListAdapter.onYYListItemHandler>>();
 
-        List<YYDataSource.TaskItem> task_list = ReportAssistantActivity.main_activity.yy_data_source.getAllTasks();
+        List<YYDataSource.TaskItem> task_list = main_activity.yy_data_source.getAllTasks();
         for( int i=0; i < task_list.size(); ++i ) {
             final YYDataSource.TaskItem ti = task_list.get( i );
 
@@ -83,5 +82,4 @@ public class TaskListView {
 
     public void updateView() {
     }
-
 }

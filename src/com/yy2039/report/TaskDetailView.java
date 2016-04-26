@@ -6,21 +6,33 @@ import java.util.Map;
 import java.util.HashMap;
 import android.widget.TextView;
 import android.widget.ListView;
+import android.widget.EditText;
 
-public class TaskDetailView {
-    protected YYListAdapter yy_list_adapter = null;
+public class TaskDetailView extends YYViewBase {
     public YYDataSource.TaskItem task_item = null;
 
     public TaskDetailView() {
+        view_layout_res_id = R.layout.task_detail;
     }
 
-    public void setView() {
-        ReportAssistantActivity.main_activity.setContentView( R.layout.task_detail );
+    public void setView( boolean bIsPush, onViewBackHandler handler ) {
+        super.setView( bIsPush, handler );
+
+        TextView tv_login_state = (TextView)main_activity.findViewById( R.id.login_state );
+        tv_login_state.setText( main_activity.login_view.login_name );
+
+        TextView tv_task_desc = (TextView)main_activity.findViewById( R.id.task_desc );
+        tv_task_desc.setText( task_item.getTaskTitle() + "历时：2天23小时" );
+
+        EditText et_location = (EditText)main_activity.findViewById( R.id.location );
+        et_location.setText( "[定位] 经常 OOXX 的地方" );
 
         fillListView();
     }
 
     public void fillListView() {
+        super.fillListView();
+
         yy_list_adapter = new YYListAdapter( ReportAssistantActivity.main_activity, R.layout.task_detail_item, getItemListData() );
         ListView lv = (ListView)ReportAssistantActivity.main_activity.findViewById( R.id.item_list );
         lv.setAdapter( yy_list_adapter );
@@ -60,6 +72,4 @@ public class TaskDetailView {
 
     public void updateView() {
     }
-
-
 }

@@ -2,20 +2,19 @@ package com.yy2039.report;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.content.Context;
 import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.Toast;
 
 public class ReportAssistantActivity extends Activity
 {
     public static ReportAssistantActivity main_activity;
     public YYDataSource yy_data_source = null;
+    public LoginView login_view = null;
     public TaskListView task_list_view = null;
     public TaskDetailView task_detail_view = null;
+
+    public boolean bIsDestroy = false;
+    public YYViewBase yy_current_view = null;
+    public YYSchedule yy_schedule = null;
 
     /** Called when the activity is first created. */
     @Override
@@ -26,29 +25,29 @@ public class ReportAssistantActivity extends Activity
         main_activity = this;
 
         yy_data_source = new YYDataSource();
+        yy_schedule = new YYSchedule( this );
+        login_view = new LoginView();
         task_list_view = new TaskListView();
         task_detail_view = new TaskDetailView();
 
-        task_list_view.setView();
-        //setContentView( R.layout.main );
-
-        //EditText pwdText = (EditText)findViewById( R.id.password );
-        //pwdText.setOnKeyListener( new OnKeyListener() {
-        //    @Override  
-        //    public boolean onKey( View view, int keyCode, KeyEvent event ) {
-        //        if( keyCode == KeyEvent.KEYCODE_ENTER ) {
-        //            InputMethodManager imm = (InputMethodManager)view.getContext().getSystemService( Context.INPUT_METHOD_SERVICE );
-        //            if( imm.isActive() ) {
-        //                imm.hideSoftInputFromWindow( view.getApplicationWindowToken(), 0 );
-        //            }
-
-        //            task_detail_view.setView();
-
-        //            return true;
-        //        }
-
-        //        return false;
-        //    }
-        //});
+        login_view.setView( false, null );
     }
+
+    public boolean onKeyDown( int keyCode, KeyEvent event )
+    {
+        if( keyCode == KeyEvent.KEYCODE_BACK )
+        {
+            YYViewBase.onBackClick();
+        }
+
+        return false;
+    }
+
+	@Override
+	protected void onDestroy()
+	{
+        bIsDestroy = true;
+
+		super.onDestroy();
+	}
 }
